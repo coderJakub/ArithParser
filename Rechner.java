@@ -8,7 +8,8 @@ class Rechner extends Parser{
     
     int Start()throws Exception{
         ht.clear();
-        if(!(match('l') && match('e') && match('t')))throw new Exception("let fehlt am Anfang");
+        if(!(match('l') && match('e') && match('t')))
+            return E();
         if(!match(' '))throw new Exception("Leerzeichen nach let fehlt");
         V();
         if(!match(' '))throw new Exception("Leerzeichen vor in fehlt");
@@ -41,7 +42,7 @@ class Rechner extends Parser{
     int D()throws Exception{
         int res=0;
         do{
-            res+=10*res+N();
+            res=10*res+N();
         }while(next()>='0' && next()<='9');
         return res;
     }
